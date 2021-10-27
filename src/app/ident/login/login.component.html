@@ -1,0 +1,157 @@
+<body>
+<div class="mid-class">
+    <div class="art-right-w3ls">
+        <h2>Login</h2>
+
+            <div class="main">
+                <div class="form-left-to-w3l">
+                    <input type="text" name="name"  placeholder="Email" [(ngModel)]="username" >
+
+
+                </div>
+                <div class="form-left-to-w3l ">
+                    <input type="password" name="Mot de passe"  placeholder="Password" [(ngModel)]="password">
+
+
+                </div>
+            </div>
+            <div class="left-side-forget">
+                <input type="checkbox" class="checked">
+                <span class="remenber-me">Souviens-toi de moi </span>
+            </div>
+
+            <div class="clear"></div>
+      <br><br>
+            <div class="btnn">
+                <button   nz-button nzType="primary" nzDanger (click)="connexion()">Vas y </button>
+            </div>
+
+
+      <br>
+
+        <div class="w3layouts_more-buttn">
+            <h3>Creer compte?
+                <button class="btn btn-link" (click)="showModal()">Ici</button>
+
+            </h3>
+        </div>
+        <!-- popup-->
+
+        <!-- //popup -->
+    </div>
+
+    <div class="art-left-w3ls">
+        <div style="background-color: white; border-radius:8px;">
+            <img src="../../../assets/logo1.png"></div>
+    </div>
+</div>
+
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Créer votre compte"
+  (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+
+>
+
+
+  <div>
+    <input nz-input placeholder="Nom" [(ngModel)]="nom" required />
+  </div>
+
+  <br>
+  <div>
+    <input nz-input placeholder="Prenom" [(ngModel)]="prenom" required />
+  </div>
+  <br>
+  <div>
+    <input nz-input placeholder="Email"  [(ngModel)]="Email" required />
+  </div>
+
+  <br>
+  <div>
+    <input nz-input placeholder="Numero de telephone"  [(ngModel)]="numTel" required />
+  </div>
+
+  <br>
+  <div>
+    <nz-select [(ngModel)]="selectedValue1"  nzAllowClear nzPlaceHolder="Choisir Région" >
+
+      <nz-option *ngFor="let option of   Region " [nzValue]="option" [nzLabel]="option.label"></nz-option>
+
+    </nz-select>
+
+  </div>
+
+
+  <br>
+  <div>
+
+    <nz-input-group [nzSuffix]="suffixTemplate">
+      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="input password" [(ngModel)]="mdp" />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+    </ng-template>
+
+
+  </div>
+
+
+  <br>
+  <div>
+    <input nz-input placeholder="Niveau Actuel"  [(ngModel)]="nivAct" required />
+  </div>
+  <br>
+  <button nz-button  nzType="default"(click)="AjoutCompte()" nzDanger>Créer votre compte</button>
+
+
+
+
+
+</nz-modal>
+
+<footer class="bottem-wthree-footer">
+    <p>
+        © 2020 CapAcademy. Tous les droits sont réservés
+    </p>
+</footer>
+<ng-template #content let-modal>
+    <div class="popup-effect">
+        <div class="popup">
+            <!--login form-->
+            <div class="letter-w3ls">
+                <form action="#" method="post">
+                    <div class="form-left-to-w3l">
+                        <input type="text" name="name" placeholder="Username" required="">
+                    </div>
+                    <div class="form-left-to-w3l">
+                        <input type="text" name="name" placeholder="Phone" required="">
+                    </div>
+                    <div class="form-left-to-w3l">
+                        <input type="email" name="email" placeholder="Email" required="">
+                    </div>
+                    <div class="form-left-to-w3l">
+                        <input type="password" name="password" placeholder="Password" required="">
+                    </div>
+                    <div class="form-left-to-w3l margin-zero">
+                        <input type="password" name="password" placeholder="Confirm Password" required="">
+                    </div>
+                    <div>
+                        <button style="background-color: red !important;" type="submit">Sign Up</button>
+                        <br>
+                    </div>
+                </form>
+                <div class="clear"></div>
+            </div>
+            <!--//login form-->
+            <a class="close" href="#">&times;</a>
+        </div>
+    </div>
+
+
+
+
+
+</ng-template>
+</body>

@@ -1,0 +1,263 @@
+<div style="text-align: center;">
+
+  <h1 > <b>Gestion des formations</b> </h1>
+
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Ajouter formation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+  <div>
+    <nz-input-group nzAddOnBefore="Nom de formation" >
+      <input type="text" nz-input [(ngModel)]="NomFormation" />
+    </nz-input-group>
+  </div>
+
+<br>
+  <div>
+    <nz-input-group nzAddOnBefore="Référence" >
+      <input type="text" nz-input [(ngModel)]="Ref" />
+    </nz-input-group>
+  </div>
+
+  <br>
+  <div>
+  <nz-input-group nzAddOnBefore="Prix" >
+    <input type="number" nz-input [(ngModel)]="Prix" />
+  </nz-input-group>
+</div>
+
+  <br>
+
+  <div >
+
+    <nz-input-group nzAddOnBefore="Date de début"  >
+      <input type="date" nz-input [(ngModel)]="dat1"/>
+    </nz-input-group>
+  </div>
+
+  <br>
+
+
+  <div>
+
+    <nz-input-group nzAddOnBefore="Date de fin"  >
+      <input type="date" nz-input [(ngModel)]="dat2"  />
+    </nz-input-group>
+  </div>
+
+
+  <div>
+    <br>
+    <nz-input-group nzAddOnBefore="specialite"   >
+      <input type="text" nz-input  [(ngModel)]="spec"/>
+    </nz-input-group>
+  </div>
+
+
+  <br>
+
+</nz-modal>
+<button nz-button nzType="primary"   nzDanger (click)="showModal()"><span style="color: black; font-size: 18px;"><b> <i class="pi pi-check" style="font-size: 1.5rem"></i>Ajouter une formation</b></span></button>
+&nbsp;
+<button nz-button nzType="primary"   nzDanger (click)="showModal1()"><span style="color: black; font-size: 18px;"><b> Affecter des formateurs </b></span></button>
+
+
+<br><br>
+
+<nz-table nzSize="small" #basicTable [nzPageSize]="8" [nzData]="products">
+  <thead>
+  <tr>
+    <th><b>Nom de la formation </b></th>
+    <th><b>Reference</b></th>
+    <th><b>Date de debut</b></th>
+    <th><b>Date de fin</b></th>
+    <th><b>specialité</b></th>
+    <th><b>Date</b></th>
+    <th><b>Prix</b></th>
+    <th>Affectés</th>
+    <th>Contenus</th>
+    <th>Chaine live </th>
+    <th>supprimer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td > {{ data.nomFormation }}</td>
+    <td>{{ data.reference }}</td>
+    <td>{{ data.dateDeb }}</td>
+    <td>{{ data.dateFin }}</td>
+    <td>{{ data.specialite }}</td>
+    <td>{{ data.temps }}</td>
+    <td>{{ data.prix }}</td>
+
+    <td>     <button nz-button nzType="primary" nzShape="circle"  ><i class="pi pi-list" (click)="showModal2(data.id)" ></i></button>
+    </td>
+
+
+    <td>
+      <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'topCenter'"><i class="pi pi-folder-open"></i></button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>
+            <button nz-button nzType="primary"   (click)="showModal3(data.id)" > Ajouter contenu
+
+            </button>
+          </li>
+          <li nz-menu-item>
+            <button nz-button nzType="primary"   (click)="showModal4(data.id)" > Afficher contenu
+
+            </button>
+          </li>
+
+        </ul>
+      </nz-dropdown-menu>
+
+
+    </td>
+
+
+    <td>
+      <button nz-button nz-dropdown [nzDropdownMenu]="menu1" [nzPlacement]="'topCenter'"><i class="pi pi-desktop"></i></button>
+      <nz-dropdown-menu #menu1="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>
+            <button nz-button nzType="primary"   (click)="showModal5(data.id ,data.nomFormation  , data.temps   )" > Ajouter Lien
+
+            </button>
+          </li>
+          <li nz-menu-item>
+
+
+        </ul>
+      </nz-dropdown-menu>
+
+
+    </td>
+
+
+
+
+
+
+
+    <td>     <button nz-button nzType="primary" nzShape="circle" (click)="supprimer(data.id)" ><i class="pi pi-trash"  ></i></button>
+    </td>
+
+
+
+
+
+  </tr>
+  </tbody>
+</nz-table>
+
+
+
+<nz-modal [(nzVisible)]="isVisible1" nzTitle="Affecter formateur aux formations" (nzOnCancel)="handleCancel1()" (nzOnOk)="  handleOk1()">
+
+<label>Formateur</label>
+  <div>
+    <nz-select [(ngModel)]="selectedValue3"  nzAllowClear nzPlaceHolder="Choisir Formateur"  style="width: 200px;">
+
+      <nz-option *ngFor="let option of   formateur " [nzValue]="option" [nzLabel]="option.nom"></nz-option>
+
+    </nz-select>
+
+  </div>
+
+  <br>
+  <label>Formation</label>
+
+  <div>
+    <nz-select [(ngModel)]="selectedValue4"  nzAllowClear nzPlaceHolder="Choisir Formation"  style="width: 200px;">
+
+      <nz-option *ngFor="let option of   products " [nzValue]="option" [nzLabel]="option.nomFormation"></nz-option>
+
+    </nz-select>
+
+  </div>
+</nz-modal>
+
+
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="Formateurs affectés a cette formation" (nzOnCancel)="handleCancel2()" (nzOnOk)="handleOk2()">
+
+  <nz-list nzBordered >
+    <nz-list-item *ngFor="let item of formateurbyformation">
+
+      <span nz-typography ><mark>{{ item.formateur }}</mark></span>
+
+    </nz-list-item>
+  </nz-list>
+
+</nz-modal>
+
+
+
+<nz-modal [(nzVisible)]="isVisible3" nzTitle="contenu de la formation" (nzOnCancel)="handleCancel3()" (nzOnOk)="handleOk3()">
+
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+         aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
+
+  <br>
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+  <br>
+
+</nz-modal>
+
+
+
+
+
+
+
+<nz-modal [(nzVisible)]="isVisible4" nzTitle="Contenu de la formation" (nzOnCancel)="handleCancel4()" (nzOnOk)="handleOk4()">
+
+  <nz-table nzSize="middle" #basicTable1 [nzPageSize]="4" [nzData]="contenuF">
+    <thead>
+    <tr>
+      <th><b>Nom de fichier </b></th>
+      <th><b>Download </b></th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable1.data">
+      <td>{{ data.name }}</td>
+
+      <td><a href="http://localhost:8080/ContenuF/file/{{data.id}}"><i class="pi pi-download"></i></a></td>
+
+      <td>     <button nz-button nzType="primary" nzShape="circle" (click)="delete(data.id)" ><i class="pi pi-trash"  ></i></button>
+
+
+
+
+
+    </tr>
+    </tbody>
+  </nz-table>
+
+
+</nz-modal>
+
+
+
+
+<nz-modal [(nzVisible)]="isVisible5" nzTitle="Lien de chaine pour la formation" (nzOnCancel)="handleCancel5()" (nzOnOk)="handleOk5()">
+  <div>
+    <nz-input-group nzAddOnBefore="Chaine" >
+      <input type="text" nz-input [(ngModel)]="chaine" />
+    </nz-input-group>
+  </div>
+
+</nz-modal>
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+h3 {
+    font-size: 30px !important;
+}
+
+.txt,
+h6 {
+    font-size: 18px !important;
+    color: #666363c0
+}
+
+.cardd {
+    box-shadow: 0 4px 8px 0 rgb(240, 235, 235), 0 6px 20px 0 rgba(194, 179, 179, 0.753) !important;
+}

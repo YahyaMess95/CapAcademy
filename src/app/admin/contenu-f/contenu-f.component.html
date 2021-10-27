@@ -1,0 +1,31 @@
+<div style="text-align: center;">
+
+  <h1 > <b>Gestion des séances</b> </h1>
+
+</div>
+
+
+<nz-table nzSize="middle" #basicTable [nzPageSize]="8" [nzData]="contenuF">
+  <thead>
+  <tr>
+    <th><b>Nom de formation </b></th>
+    <th><b>Date de formation </b></th>
+    <th>Lien de seance</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.nomFormation }}</td>
+    <td>{{ data.date}}</td>
+    <td><a href="{{ data.url}}" target="_blank">Accéder</a></td>
+
+
+
+
+
+
+
+  </tr>
+  </tbody>
+</nz-table>

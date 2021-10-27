@@ -1,0 +1,133 @@
+<div style="text-align: center;">
+
+  <h1 > <b>Gestion des formateurs</b> </h1>
+
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Ajouter formation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+
+  <div>
+    <nz-input-group nzAddOnBefore="nom" >
+      <input type="text" nz-input [(ngModel)]="nom" />
+    </nz-input-group>
+
+  </div>
+
+  <br>
+
+  <div>
+    <nz-input-group nzAddOnBefore="prenom" >
+      <input type="text" nz-input [(ngModel)]="prenom" />
+    </nz-input-group>
+
+  </div>
+  <br>
+  <div>
+    <nz-input-group nzAddOnBefore="email" >
+      <input type="text" nz-input [(ngModel)]="Email" />
+    </nz-input-group>
+
+  </div>
+
+  <br>
+  <div>
+    <nz-input-group nzAddOnBefore="numero de tel" >
+      <input type="text" nz-input [(ngModel)]="numTel" />
+    </nz-input-group>
+
+  </div>
+
+  <br>
+
+  <div>
+    <nz-input-group nzAddOnBefore="niveau" >
+      <input type="text" nz-input [(ngModel)]="nivAct" />
+    </nz-input-group>
+
+  </div>
+
+  <br>
+
+  <div>
+    <nz-input-group nzAddOnBefore="mot de passe" >
+      <input type="text" nz-input [(ngModel)]="mdp" />
+    </nz-input-group>
+
+  </div>
+  <br>
+
+  <div>
+    <nz-input-group nzAddOnBefore="spécialité" >
+      <input type="text" nz-input [(ngModel)]="specialite" />
+    </nz-input-group>
+
+  </div>
+  <br>
+
+  <div>
+    <nz-select [(ngModel)]="selectedValue1"  nzAllowClear nzPlaceHolder="Choisir Région" >
+
+      <nz-option *ngFor="let option of   Region " [nzValue]="option" [nzLabel]="option.label"></nz-option>
+
+    </nz-select>
+
+  </div>
+
+
+  <br>
+  <div>
+    <nz-select [(ngModel)]="selectedValue2"  nzAllowClear nzPlaceHolder="Choisir type formateur" >
+
+      <nz-option *ngFor="let option of   typeformateur " [nzValue]="option" [nzLabel]="option.label"></nz-option>
+
+    </nz-select>
+
+  </div>
+
+  <br>
+
+
+
+
+</nz-modal>
+<button nz-button nzType="primary"   nzDanger (click)="showModal()"><span style="color: black; font-size: 18px;"><b> <i class="pi pi-check" style="font-size: 1.5rem"></i>Ajouter un formateur</b></span></button>
+
+
+<br><br>
+<nz-table #basicTable [nzPageSize]="8" [nzData]="formateur">
+  <thead>
+  <tr>
+    <th><b>Nom de formateur </b></th>
+    <th><b>Email</b></th>
+    <th><b>prenom</b></th>
+    <th><b>numero de tel</b></th>
+    <th><b>region</b></th>
+
+    <th><b>niveau</b></th>
+    <th>mot de passe</th>
+    <th>specialite</th>
+    <th>profession</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.nom }}</td>
+    <td>{{ data.email }}</td>
+    <td>{{ data.prenom }}</td>
+    <td>{{ data.numTel }}</td>
+    <td>{{ data.region }}</td>
+    <td>{{ data.niveauActuel }}</td>
+    <td>{{ data.motDepasse }}</td>
+    <td>{{ data.specialite }}</td>
+    <td>{{ data.proffession }}</td>
+
+    <td>     <button nz-button nzType="primary" nzShape="circle" (click)="supprimer(data.id)" ><i class="pi pi-trash" ></i></button>
+    </td>
+
+
+
+  </tr>
+  </tbody>
+</nz-table>

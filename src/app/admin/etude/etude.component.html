@@ -1,0 +1,83 @@
+<div style="text-align: center;">
+
+  <h1 > <b>Gestion des etudes</b> </h1>
+
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Ajouter formation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+
+  <div>
+    <input nz-input placeholder="matiere" [(ngModel)]="matiere" required />
+  </div>
+
+  <br>
+  <div>
+    <input nz-input placeholder="niveau" [(ngModel)]="niveau" required />
+  </div>
+  <br>
+  <div>
+    <input nz-input placeholder="date de debut"  type="date" [(ngModel)]="dateDeb" required />
+  </div>
+
+  <br>
+  <div>
+    <input nz-input placeholder="prix"  [(ngModel)]="prix" required />
+  </div>
+  <br>
+  <div>
+
+    <nz-select [(ngModel)]="selectedValue5"  nzAllowClear nzPlaceHolder="Choisir Professeur"  style="width: 200px;">
+
+      <nz-option *ngFor="let option of   formateur " [nzValue]="option" [nzLabel]="option.nom"></nz-option>
+
+    </nz-select>
+
+  </div>
+
+
+
+</nz-modal>
+<button nz-button nzType="primary"   nzDanger (click)="showModal()"><span style="color: black; font-size: 18px;"><b> <i class="pi pi-check" style="font-size: 1.5rem"></i>Ajouter etude</b></span></button>
+
+
+
+<br><br>
+<nz-table #basicTable [nzPageSize]="8" [nzData]="etude">
+  <thead>
+  <tr>
+    <th><b>Matiere</b></th>
+    <th><b>Niveau</b></th>
+    <th><b>Date de début</b></th>
+    <th><b>prix</b></th>
+    <th>Supprimer</th>
+    <th>Affectés</th>
+
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+
+    <td> {{ data.matiere}} </td>
+    <td> {{ data.niveau  }}</td>
+    <td> {{ data.dateDeb }}</td>
+    <td> {{ data.prix }}   </td>
+    <td><button nz-button nzType="primary" nzShape="circle" (click)="supprimer(data.id)" ><i class="pi pi-trash" ></i></button></td>
+
+    <td>     <button nz-button nzType="primary" nzShape="circle"  ><i class="pi pi-list" (click)="showModal2(data.id)" ></i></button></td>
+
+  </tr>
+  </tbody>
+</nz-table>
+
+
+
+
+
+
+
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="Contenu de cette formation" (nzOnCancel)="handleCancel2()" (nzOnOk)="handleOk2()">
+
+
+</nz-modal>

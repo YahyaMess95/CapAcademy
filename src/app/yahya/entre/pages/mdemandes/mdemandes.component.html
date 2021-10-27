@@ -1,0 +1,33 @@
+<br>
+<br>
+
+
+
+<br>
+
+<nz-table nzSize="small" #basicTable [nzPageSize]="8" [nzData]="chercher" >
+  <thead >
+  <tr>
+    <th><b>Nom de la formation </b></th>
+    <th><b>Date de debut</b></th>
+    <th><b>Etat</b></th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td > {{ data.nomFormation }}</td>
+
+    <td>{{ data.dateDeb }}</td>
+    <td>{{ data.etat }}</td>
+
+
+
+
+
+
+
+
+  </tr>
+  </tbody>
+</nz-table>

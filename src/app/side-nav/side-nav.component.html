@@ -1,0 +1,69 @@
+
+<p>
+  <mat-toolbar style="background-color: red;">
+    <mat-toolbar-row>
+
+
+      <button style="color: white;" mat-icon-button class="example-icon" (click)="open()" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+
+      </button>
+
+      <span style="color: white;">Cap Academy</span>
+      <span class="example-spacer"></span>
+
+
+      <button style="color: white;" mat-icon-button class="example-icon" routerLink="../" aria-label="Example icon-button with menu icon">
+        <mat-icon>lock_open</mat-icon>
+
+      </button>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+</p>
+
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="left"  (nzOnClose)="close()">
+
+  <div style="text-align: center;"><h2 nzDanger routerLink="../admin/accueil"><u> Cap Academie</u></h2></div>
+
+  <h4><u> Formation</u></h4>
+  <ul nz-list  nzSize="large">
+
+
+    <li nz-list-item  nzFlex>
+      <button nz-button nzType="text" nzDanger routerLink="../admin/formation"> 	<mat-icon>note_add</mat-icon><b>Gestion Formation </b></button>
+    </li>
+
+    <li nz-list-item  nzFlex>
+      <button nz-button nzType="text" nzDanger routerLink="../admin/formateur"> <mat-icon>person_add</mat-icon> <b> Gestion Formateur</b></button>
+    </li>
+
+    <li nz-list-item  nzFlex>
+      <button nz-button nzType="text" nzDanger> 	<mat-icon>sd_card</mat-icon> <b>Gestions de demandes</b> </button>
+    </li>
+
+
+
+
+    <li nz-list-item  nzFlex>
+      <button nz-button nzType="text" nzDanger routerLink="../admin/contenuF"> <mat-icon>event_note</mat-icon><b> Gestion  Séances</b></button>
+    </li>
+
+
+  </ul>
+
+
+
+
+  <h4><u> Etude</u></h4>
+  <ul nz-list  nzSize="large">
+
+
+    <li nz-list-item  nzFlex>
+      <button nz-button nzType="text" nzDanger routerLink="../admin/etude"> <mat-icon>add_circle</mat-icon><b>Gestion Etude </b></button>
+    </li>
+
+
+
+  </ul>
+</nz-drawer>

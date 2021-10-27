@@ -1,0 +1,16 @@
+nz-select {
+  width: 470px;
+}
+
+body {
+  /* position: relative;*/
+  background: url(b1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
